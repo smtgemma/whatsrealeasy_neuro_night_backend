@@ -1,5 +1,7 @@
-.env
 dist
-.vscode
+temp_auto_push.bat
 generated
+node_modules.gitignore
+branch_structure.json
+config.bat
 node_modules
