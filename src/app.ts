@@ -18,9 +18,9 @@ app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
 app.use(
   cors({
     origin: [
-      // "http://localhost:3000",
-      // "http://localhost:3001",
-      // "http://localhost:3002",
+      "http://localhost:3000",
+      "http://localhost:3001",
+      "http://localhost:3002",
       "https://whatsrealeasy-nu.vercel.app",
       "https://www.advanceaimarketing.cloud",
       "https://advanceaimarketing.cloud",
