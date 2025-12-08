@@ -12,7 +12,7 @@ const main = async () => {
 
     server = app.listen(config.port, () => {
       console.log(
-        `🚀 App is listening on: http://${config.host}:${config.port}`
+        `🚀 Whats Real Easy Backend App is listening on: http://${config.host}:${config.port}`
       );
     });
   } catch (err) {
