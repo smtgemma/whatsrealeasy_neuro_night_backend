@@ -9,12 +9,12 @@
   },
   "scripts": {
     "postinstall": "npx prisma generate",
-    "start": "node ./dist/server.js",
+    "start": "node init && node ./dist/server.js",
     "pm": "npx prisma migrate dev ",
     "pg": "npx prisma generate",
     "generate-module": "ts-node generate-module.ts",
-    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
-    "build": "tsc"
+    "dev": "node init && ts-node-dev --respawn --transpile-only src/server.ts",
+    "build": "node init && tsc"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",
@@ -47,6 +47,7 @@
     "http-status": "^2.1.0",
     "jsonwebtoken": "^9.0.2",
     "multer": "^1.4.5-lts.2",
+    "node-fetch": "^3.3.2",
     "nodemailer": "^7.0.3",
     "zod": "^3.24.4"
   },
