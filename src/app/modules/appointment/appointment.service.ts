@@ -61,8 +61,17 @@ const refreshAccessToken = async (): Promise<void> => {
     );
 
     oAuth2Client.setCredentials(credentials as any);
-  } catch (error) {
-    console.error("Error refreshing access token:", error);
+  } catch (error: any) {
+    if (
+      (error.response && error.response.data && error.response.data.error === "invalid_grant") ||
+      error.message?.includes("invalid_grant") ||
+      error.code === '400'
+    ) {
+      console.log("Refresh token is invalid or expired. Clearing tokens from database...");
+      await tokenService.clearTokens();
+    } else {
+      console.error("Error refreshing access token:", error);
+    }
     throw error;
   }
 };
@@ -254,7 +263,7 @@ const manualRefreshToken = async (): Promise<boolean> => {
 const getUserEmail = async (): Promise<string | null> => {
   try {
     if (!oAuth2Client) initializeOAuthClient();
-    
+
     const oauth2 = google.oauth2({
       auth: oAuth2Client,
       version: "v2",
